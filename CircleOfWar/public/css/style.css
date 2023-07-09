@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    height: 100vh;
+    /* Set the body height to full viewport height */
+    position: relative;
+
+
+}
+.vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0.2) 70%);
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+.vignette-hidden {
+    opacity: 0;
+}
+#arena {
+    width: 1200px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: solid white 2px;
+    background-image: url('../pictures/arena2.png');
+    background-size: contain;
+    background-repeat: ;
+    background-position: center;
+}
+#joinContainer {
+    position: absolute;
+    padding: 1em;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#joinContainer input, #joinContainer select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    outline: 1px solid white;
+}
+#joinContainer select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    appearance: none;
+    /* Hide default dropdown arrow */
+}
+#joinContainer select option {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+#joinAgain {
+    padding: 0.5em 2em;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 128, 128, 0.5);
+    position: relative;
+    overflow: hidden;
+    outline: white solid 2px;
+}
+#joinAgain:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#joinAgain::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient( to top right, rgba(0, 255, 255, 0.2) 20%, rgba(0, 255, 255, 0) 80%);
+    transform: rotate(45deg);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+#joinAgain:hover::before {
+    opacity: 1;
+}
+#spawning {
+    position: absolute;
+    z-index: 999;
+    color: white;
+    font-size: 7em;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#Movements {
+    font-size: 1em;
+    color: white;
+    position: absolute;
+    background-color: ;
+    margin-left: 40px;
+    margin-top: 30px;
+    z-index: 1000;
+    user-select: none;
+}

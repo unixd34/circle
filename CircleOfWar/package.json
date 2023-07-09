@@ -1,0 +1,19 @@
+{
+  "name": "circleofwar",
+  "version": "1.0.0",
+  "description": "Circle of war, war begins on your hand",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "circleofwar"
+  },
+  "author": "Unique",
+  "license": "ISC",
+  "dependencies": {
+    "modules-package": "^4.0.0"
+  }
+}

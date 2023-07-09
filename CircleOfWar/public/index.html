@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+	<style>
+		.vignette-effect {
+			position: relative;
+			background-color: red;
+		}
+
+		.vignette-effect:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 90%);
+			pointer-events: none;
+		}
+	</style>
+	<title></title>
+</head>
+<body>
+
+	<div id="Movements">Use WASD key to move, click to shoot</div>
+	<div class="vignette-effect"></div>
+
+	<h1 id="spawning">Spawning In</h1>
+
+	<div id="joinContainer">
+		<input type="Text" id="username" placeholder="Enter Username...">
+		&nbsp&nbsp
+		<select id="color">
+			<option value="" disabled selected>-- Select Color --</option>
+			<option value="Red">Red</option>
+			<option value="Blue">Blue</option>
+			<option value="Green">Green</option>
+			<option value="Yellow">Yellow</option>
+			<option value="Teal">Teal</option>
+			<option value="Purple">Purple</option>
+		</select>
+		&nbsp&nbsp
+		<button id="joinAgain">Click to join!</button>
+	</div>
+
+	<canvas id="arena" width="1200" height="600"></canvas>
+	<div id="vignette" class="vignette"></div>
+	<script src="js/enemybullets.js"></script>
+	<script src="js/enemies.js"></script>
+	<script src="js/bullets.js"></script>
+	<script src="js/movements.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/collision.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
