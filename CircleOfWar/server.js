@@ -1,22 +1,29 @@
-const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const path = require('path');
+const fs = require('fs');
 
-const app = express();
-const server = http.createServer(app);
+const server = http.createServer((req, res) => {
+  const publicFolderPath = path.join(__dirname, 'public');
+  const filePath = req.url === '/' ? '/index.html' : req.url;
+  const fullPath = path.join(publicFolderPath, filePath);
+
+  fs.readFile(fullPath, (err, data) => {
+    if (err) {
+      res.writeHead(404);
+      res.end('404 Not Found');
+    } else {
+      res.writeHead(200);
+      res.end(data);
+    }
+  });
+});
+
 const io = socketIO(server);
-
-const publicFolderPath = path.join(__dirname, 'public');
-const port = 3000; // You can change the port number as per your requirement
-
-// Serve static files from the public folder
-app.use(express.static(publicFolderPath));
 
 let players = {};
 let bullets = [];
 
-// Socket.IO connection handling
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   players[socket.id] = {}; // Create an empty object for the connected player
@@ -44,12 +51,12 @@ io.on('connection', (socket) => {
     io.emit('newBullet', bullet); // Emit the new bullet to all clients
   });
 
-
   socket.on('disconnect', () => {
     delete players[socket.id];
   });
 });
 
+const port = 3000; // You can change the port number as per your requirement
 
 // Start the server
 server.listen(port, () => {
